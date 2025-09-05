@@ -1,0 +1,18 @@
+---
+import LeftSide from "../components/LeftSide.astro";
+import Navbar from "../components/Navbar.astro";
+import RightSide from "../components/RightSide.astro";
+import SocialMedia from "../components/SocialMedia.astro";
+import Spotlight from "../components/Spotlight.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <Spotlight/>
+  <Navbar/>
+  <SocialMedia />
+  <body class="h-full w-full flex">
+    <LeftSide />
+    <RightSide />
+  </body>
+</Layout>

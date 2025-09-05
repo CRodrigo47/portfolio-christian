@@ -1,0 +1,16 @@
+---
+const { title, description, icon } = Astro.props;
+---
+
+<div class="block w-4/5 font-syne">
+  <div class="flex items-center">
+    <div class="flex-shrink-0">
+      <img src={`/${icon}.svg`} alt="" width="64" />
+    </div>
+    <div class="flex-grow text-center">
+      <h1 class="text-2xl">{title}</h1>
+    </div>
+    <div class="flex-shrink-0 w-16"></div>
+  </div>
+  <h2>{description}</h2>
+</div>
