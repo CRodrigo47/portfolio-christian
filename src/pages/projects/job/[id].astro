@@ -1,0 +1,73 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../../layouts/Layout.astro";
+import Spotlight from "../../../components/Spotlight.astro";
+import Navbar from "../../../components/Navbar.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("jobProjects");
+
+  return projects.map((project) => ({
+    params: { id: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { data, slug } = project;
+const { title, img, description } = data;
+
+const { Content } = await render(project);
+
+export const prerender = true;
+---
+
+<Layout>
+  <Spotlight />
+  <Navbar />
+
+  <!-- Reemplaza el div del botón de retroceso con esto: -->
+  <!-- Botón de retroceso con z-index superior -->
+  <div class="ps-60 pt-12">
+    <a
+      href="/#work"
+      class="relative z-100 flex items-center gap-2 text-white hover:text-gray-300 transition-colors duration-200 cursor-pointer w-20"
+    >
+      <svg
+        class="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M15 19l-7-7 7-7"></path>
+      </svg>
+      Back
+    </a>
+  </div>
+
+  <div class="flex gap-12 ps-60 pt-30">
+    <aside>
+      <img
+        transition:name={`img-${slug}`}
+        src={`${img}`}
+        alt={title}
+        class="rounded w-72 h-auto py-2"
+      />
+    </aside>
+    <main>
+      <h1
+        transition:name={`title-${slug}`}
+        class="text-4xl font-bold mb-4 text-white font-syne"
+      >
+        {title}
+      </h1>
+      <div class="text-white font-instrument animate-fadeIn">
+        <Content />
+      </div>
+    </main>
+  </div>
+</Layout>

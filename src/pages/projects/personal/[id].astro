@@ -1,11 +1,11 @@
 ---
 import { getCollection, render } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
-import Spotlight from "../../components/Spotlight.astro";
-import Navbar from "../../components/Navbar.astro";
+import Layout from "../../../layouts/Layout.astro";
+import Spotlight from "../../../components/Spotlight.astro";
+import Navbar from "../../../components/Navbar.astro";
 
 export async function getStaticPaths() {
-  const projects = await getCollection("jobProjects");
+  const projects = await getCollection("personalProjects");
 
   return projects.map((project) => ({
     params: { id: project.slug },
@@ -28,7 +28,7 @@ export const prerender = true;
 
   <!-- Reemplaza el div del botón de retroceso con esto: -->
   <!-- Botón de retroceso con z-index superior -->
-  <div class="ps-20 pt-6">
+  <div class="ps-60 pt-12">
     <a
       href="/#work"
       class="relative z-100 flex items-center gap-2 text-white hover:text-gray-300 transition-colors duration-200 cursor-pointer w-20"
@@ -49,7 +49,7 @@ export const prerender = true;
     </a>
   </div>
 
-  <div class="flex gap-12 ps-40 pt-40">
+  <div class="flex gap-12 ps-60 pt-30">
     <aside>
       <img
         transition:name={`img-${slug}`}

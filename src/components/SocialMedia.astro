@@ -69,8 +69,8 @@
     // Función para verificar si estamos en resolución md o mayor
     const isMdOrLarger = () => window.innerWidth >= 768;
 
-    const handleScroll = () => {
-      // Solo aplicar el comportamiento de scroll en resoluciones md y mayores
+    const updateFooterPosition = () => {
+      // Solo aplicar el comportamiento en resoluciones md y mayores
       if (isMdOrLarger()) {
         if (window.scrollY > 10) {
           footer.classList.add("scrolled");
@@ -83,22 +83,47 @@
       }
     };
 
+    const handleScroll = () => {
+      updateFooterPosition();
+    };
+
     const handleResize = () => {
-      // Al cambiar el tamaño de ventana, reevaluar
-      handleScroll();
+      updateFooterPosition();
+    };
+
+    // Función para verificar la posición después de cambios de hash
+    const handleHashChange = () => {
+      // Usar setTimeout para esperar a que el navegador termine de scrollear al anchor
+      setTimeout(() => {
+        updateFooterPosition();
+      }, 100);
+    };
+
+    // Función para verificar la posición al cargar la página
+    const handlePageLoad = () => {
+      // Usar setTimeout para asegurar que el DOM esté completamente renderizado
+      setTimeout(() => {
+        updateFooterPosition();
+      }, 100);
     };
 
     // Ejecutar al cargar la página
-    handleScroll();
+    handlePageLoad();
 
     // Agregar event listeners
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
+    window.addEventListener("hashchange", handleHashChange);
+
+    // También escuchar cuando la página se carga completamente
+    window.addEventListener("load", handlePageLoad);
 
     // Cleanup function para cuando el componente se desmonte
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("hashchange", handleHashChange);
+      window.removeEventListener("load", handlePageLoad);
     };
   }
 
@@ -108,4 +133,9 @@
   } else {
     handleSocialMediaScroll();
   }
+
+  // Para casos de navegación SPA (si usas ViewTransitions de Astro)
+  document.addEventListener("astro:page-load", () => {
+    handleSocialMediaScroll();
+  });
 </script>

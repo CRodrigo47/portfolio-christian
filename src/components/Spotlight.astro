@@ -1,25 +1,22 @@
----
----
-
 <div id="spotlight" class="pointer-events-none fixed inset-0 z-30"></div>
 
 <script>
   function initSpotlight() {
     const spotlight = document.getElementById("spotlight");
-    
+
     if (spotlight) {
       // Remover listener anterior si existe para evitar duplicados
       document.removeEventListener("mousemove", handleMouseMove);
-      
+
       // Agregar nuevo listener
       document.addEventListener("mousemove", handleMouseMove);
     }
   }
-  
-  function handleMouseMove(e: { clientX: any; clientY: any; }) {
+
+  function handleMouseMove(e: { clientX: any; clientY: any }) {
     const spotlight = document.getElementById("spotlight");
     if (!spotlight) return;
-    
+
     const { clientX, clientY } = e;
     spotlight.style.background = `
       radial-gradient(600px at ${clientX}px ${clientY}px, rgba(120, 100, 195, 0.2), transparent 80%)
@@ -28,7 +25,7 @@
 
   // Inicializar en la carga inicial
   initSpotlight();
-  
+
   // Re-inicializar después de cada navegación con View Transitions
-  document.addEventListener('astro:after-swap', initSpotlight);
+  document.addEventListener("astro:after-swap", initSpotlight);
 </script>
