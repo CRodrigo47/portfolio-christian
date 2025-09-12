@@ -7,12 +7,12 @@ const personalProjects = await getCollection("personalProjects")
 ---
 
 <div class="text-center text-white py-4 font-syne">
-  <h2 class="text-xl font-semibold pt-2 pb-6">Other Jobs Work</h2>
+  <h2 class="text-xl font-semibold pt-2 pb-6">Other Jobs</h2>
   <div class="flex flex-wrap justify-center">
     {
       jobProjects.map((project) => {
         const { slug, data } = project;
-        const { title, img, description } = data;
+        const { title, img, description, icons } = data;
 
         return (
           <WorkCard
@@ -20,18 +20,19 @@ const personalProjects = await getCollection("personalProjects")
             description={description}
             img={img}
             slug={slug}
+            icons={icons}
             type="job"
           />
         );
       })
     }
   </div>
-  <h2 class="text-xl font-semibold pt-2 pb-6">Personal Projects</h2>
+  <h2 class="text-xl font-semibold pt-8 pb-6">Personal Projects</h2>
   <div class="flex flex-wrap justify-center">
     {
       personalProjects.map((project) => {
         const { slug, data } = project;
-        const { title, img, description } = data;
+        const { title, img, description, icons } = data;
 
         return (
           <WorkCard
@@ -39,6 +40,7 @@ const personalProjects = await getCollection("personalProjects")
             description={description}
             img={img}
             slug={slug}
+            icons={icons}
             type="personal"
           />
         );

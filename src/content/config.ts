@@ -5,6 +5,8 @@ const jobProjects = defineCollection({
     title: z.string(),
     img: z.string(),
     description: z.string(),
+    icons: z.array(z.string()),
+    gallery: z.array(z.string())
   }),
 });
 
@@ -13,6 +15,8 @@ const personalProjects = defineCollection({
     title: z.string(),
     img: z.string(),
     description: z.string(),
+    icons: z.array(z.string()),
+    gallery: z.array(z.string())
   }),
 });
 

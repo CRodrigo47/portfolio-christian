@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 :root {
   --font-syne: "Syne", sans-serif;
@@ -15,6 +16,10 @@
   }
   .port-color {
     color: var(--port-color);
+  }
+
+  .bg-port-color {
+    background-color: var(--port-color);
   }
 
   .border-port-color {
@@ -79,6 +84,12 @@
 @theme {
   --breakpoint-2xl: 130rem;
   --breakpoint-xl: 70rem;
+}
+
+.btn-download:hover {
+  background-color: var(--port-color);
+  color: black;
+  border-color: var(--port-color);
 }
 
 .tooltip {
@@ -177,7 +188,6 @@
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(186, 156, 231, 0.2);
   border-radius: 12px;
-  padding: 2rem;
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
 }

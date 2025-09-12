@@ -1,5 +1,7 @@
 ---
-const { title, img, description, slug, type } = Astro.props;
+import { Image } from "astro:assets";
+
+const { title, img, description, icons, slug, type } = Astro.props;
 const projectPath = type === 'job' ? `/projects/job/${slug}` : `/projects/personal/${slug}`;
 ---
 
@@ -7,10 +9,12 @@ const projectPath = type === 'job' ? `/projects/job/${slug}` : `/projects/person
   <div class="bg-black border border-gray-800 rounded-xl overflow-hidden hover:border-gray-600 transition-all duration-300 hover:shadow-lg hover:shadow-gray-900/20 group">
     <a href={projectPath} class="block">
       <div class="relative h-48 overflow-hidden">
-        <img
+        <Image
           transition:name={`img-${slug}`}
           src={img}
           alt={title}
+          width={1}
+          height={1}
           class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
         />
         <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -26,6 +30,11 @@ const projectPath = type === 'job' ? `/projects/job/${slug}` : `/projects/person
         <p class="text-gray-400 leading-relaxed font-light">
           {description}
         </p>
+        <div class="flex w-full justify-center gap-6 pt-6 text-2xl opacity-90">
+          {icons.map((icon: string) => (
+            <i class={icon} transition:name={`icon-${icon + slug}`} ></i>
+          ))}
+        </div>
       </div>
     </a>
   </div>
