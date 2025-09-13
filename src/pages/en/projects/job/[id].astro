@@ -1,0 +1,146 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../../../layouts/Layout.astro";
+import Spotlight from "../../../../components/Spotlight.astro";
+import Navbar from "../../../../components/Navbar.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("jobProjects");
+
+  return projects.map((project) => ({
+    params: { id: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { data, slug } = project;
+const { title, img, description, icons, gallery } = data;
+
+const { Content } = await render(project);
+
+export const prerender = true;
+---
+
+<Layout>
+  <Spotlight />
+  <Navbar />
+  
+  <div class="ps-60 pt-12">
+    <a
+      href="/#work"
+      class="relative z-100 flex items-center gap-2 text-white hover:text-gray-300 transition-colors duration-200 cursor-pointer w-20"
+    >
+      <svg
+        class="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M15 19l-7-7 7-7"></path>
+      </svg>
+      Back
+    </a>
+  </div>
+
+  <iconsSide>
+    <div
+      class="text-white font-instrument text-6xl text-center flex w-full justify-center pt-6 gap-10"
+    >
+      {
+        icons.map((icon: string) => (
+          <i class={icon} transition:name={`icon-${icon + slug}`} />
+        ))
+      }
+    </div>
+  </iconsSide>
+
+  <div class="flex justify-center items-center gap-12 py-12 ">
+    <aside>
+      <img
+        transition:name={`img-${slug}`}
+        src={`${img}`}
+        alt={title}
+        class="rounded-4xl w-auto h-150 py-2"
+      />
+    </aside>
+    <main class="text-center items-center">
+      <h1
+        transition:name={`title-${slug}`}
+        class="text-4xl font-bold mb-4 text-white font-syne"
+      >
+        {title}
+      </h1>
+      <div class="text-white font-instrument animate-fadeIn text-start prose">
+        <Content />
+      </div>
+    </main>
+  </div>
+
+  <h1
+    class="text-4xl font-bold mt-8 text-white font-syne text-center"
+  >
+    More Images
+  </h1>
+  <div class="mt-10 flex justify-center">
+    <div class="gallery-container w-2/3 max-w-6xl overflow-hidden">
+      <div class="gallery-track flex gap-6 mb-20">
+        {
+          gallery.map((photo: string, index: number) => (
+            <img
+              src={photo}
+              alt={`Gallery image ${index + 1}`}
+              class="gallery-item rounded-2xl max-h-120 object-cover flex-shrink-0"
+            />
+          ))
+        }
+        <!-- Duplicar imágenes para el loop infinito -->
+        {
+          gallery.map((photo: string, index: number) => (
+            <img
+              src={photo}
+              alt={`Gallery image ${index + 1}`}
+              class="gallery-item rounded-2xl max-h-120 object-cover flex-shrink-0"
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .gallery-container {
+    mask: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
+    -webkit-mask: linear-gradient(
+      90deg,
+      transparent,
+      black 2%,
+      black 98%,
+      transparent
+    );
+  }
+
+  .gallery-track {
+    width: max-content;
+    animation: infiniteScroll 30s linear infinite;
+  }
+
+  @keyframes infiniteScroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Pausar la animación al hacer hover (opcional) */
+  .gallery-container:hover .gallery-track {
+    animation-play-state: paused;
+  }
+</style>

@@ -1,11 +1,18 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
-import Spotlight from "../components/Spotlight.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  lang?: string;
+}
+
+const { title = "Christian Portfolio", description = "Portfolio Desarrollador Full Stack", lang = "en" } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -19,7 +26,12 @@ import Spotlight from "../components/Spotlight.astro";
       href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Syne:wght@400..800&display=swap"
       rel="stylesheet"
     />
-    <title>Christian Portfolio</title>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <!-- Enlaces alternativos para idiomas -->
+    <link rel="alternate" hreflang="en" href="/en" />
+    <link rel="alternate" hreflang="es" href="/es" />
+    <link rel="alternate" hreflang="x-default" href="/" />
     <ClientRouter />
   </head>
   <body>

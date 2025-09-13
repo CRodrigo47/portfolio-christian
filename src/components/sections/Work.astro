@@ -1,13 +1,17 @@
 ---
 import { getCollection } from "astro:content";
 import WorkCard from "../WorkCard.astro";
+import { useTranslations } from "../../utils/translations";
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 
 const jobProjects = await getCollection("jobProjects");
-const personalProjects = await getCollection("personalProjects")
+const personalProjects = await getCollection("personalProjects");
 ---
 
 <div class="text-center text-white py-4 font-syne">
-  <h2 class="text-xl font-semibold pt-2 pb-6">Other Jobs</h2>
+  <h2 class="text-xl font-semibold pt-2 pb-6">{t("work.otherJobs")}</h2>
   <div class="flex flex-wrap justify-center">
     {
       jobProjects.map((project) => {
@@ -22,12 +26,13 @@ const personalProjects = await getCollection("personalProjects")
             slug={slug}
             icons={icons}
             type="job"
+            lang={lang}
           />
         );
       })
     }
   </div>
-  <h2 class="text-xl font-semibold pt-8 pb-6">Personal Projects</h2>
+  <h2 class="text-xl font-semibold pt-8 pb-6">{t("work.personalProjects")}</h2>
   <div class="flex flex-wrap justify-center">
     {
       personalProjects.map((project) => {
@@ -42,6 +47,7 @@ const personalProjects = await getCollection("personalProjects")
             slug={slug}
             icons={icons}
             type="personal"
+            lang={lang}
           />
         );
       })

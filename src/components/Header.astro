@@ -1,3 +1,10 @@
+---
+import { useTranslations } from "../utils/translations"
+
+const {lang} = Astro.props
+const t = useTranslations(lang)
+---
+
 <leftSide class="animate-fadeIn">
   <header
     class="flex flex-col items-center justify-center min-h-screen px-4 pt-20 pb-10 text-center h-full
@@ -11,13 +18,13 @@
       <subTitle
         class="xl:text-3xl text-2xl pt-4 flex gap-2 justify-center lg:ps-1"
       >
-        <h1 class="port-color">Software</h1>
-        <h1>Web Developer</h1>
+        <h1 class="port-color">{t("header.role1")}</h1>
+        <h1>{t("header.role2")}</h1>
       </subTitle>
       <h3
         class="xl:text-lg text-base mt-2 opacity-80 text-center lg:me-3 xl:pe-0 xl:me-0 xl:ps-1.5"
       >
-        Crafting modern, fast, and user-centered web experiences
+        {t("header.subtitle")}
       </h3>
     </headerTitle>
     <div

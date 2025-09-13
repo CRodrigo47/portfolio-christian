@@ -1,0 +1,70 @@
+---
+import { useTranslations } from "../../utils/translations.js";
+import Layout from "../../layouts/Layout.astro";
+import AboutCard from "../../components/AboutCard.astro";
+import Header from "../../components/Header.astro";
+import Navbar from "../../components/Navbar.astro";
+import About from "../../components/sections/About.astro";
+import Contact from "../../components/sections/Contact.astro";
+import Skills from "../../components/sections/Skills.astro";
+import Work from "../../components/sections/Work.astro";
+import SocialMedia from "../../components/SocialMedia.astro";
+import Spotlight from "../../components/Spotlight.astro";
+import LanguageSelector from "../../components/LanguageSelector.astro";
+
+const lang = 'es';
+const t = useTranslations(lang);
+---
+
+<Layout title={t("site.title")} description={t("site.description")} lang={lang}>
+  <Spotlight />
+  <Navbar lang={lang} />
+  <SocialMedia />
+  <LanguageSelector currentLang={lang} />
+  <body class="h-full w-full flex">
+    <Header lang={lang} />
+    <div class="px-5 md:px-25 font-instrument text-white opacity-85 text-center pb-10">
+      <h1>{t("site.title")}</h1>
+      <p>{t("site.subtitle")}</p>
+      
+      <h1 id="about" class="text-3xl xl:text-4xl 2xl:text-5xl font-syne mb-10">
+        {t("about.title")}
+      </h1>
+      <div class="flex items-center mb-10">
+        <About lang={lang} />
+        <div class="col w-1/2 px-20">
+          <AboutCard
+            lang={lang}
+            cardType="cleanCode"
+            icon="code"
+          />
+          <AboutCard
+            lang={lang}
+            cardType="highPerf"
+            icon="lightning"
+          />
+          <AboutCard
+            lang={lang}
+            cardType="frameworks"
+            icon="mobile"
+          />
+        </div>
+      </div>
+
+      <h1 id="skills" class="text-3xl xl:text-4xl 2xl:text-5xl font-syne mb-8">
+        {t("skills.title")}
+      </h1>
+      <Skills lang={lang} />
+      
+      <h1 id="work" class="text-3xl xl:text-4xl 2xl:text-5xl font-syne mt-8">
+        {t("work.title")}
+      </h1>
+      <Work lang={lang} />
+      
+      <h1 id="contact" class="text-3xl xl:text-4xl 2xl:text-5xl font-syne mt-8 mb-10">
+        {t("contact.title")}
+      </h1>
+      <Contact lang={lang} />
+    </div>
+  </body>
+</Layout>

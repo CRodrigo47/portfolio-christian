@@ -1,5 +1,18 @@
 ---
-const { title, description, icon } = Astro.props;
+import { useTranslations } from "../utils/translations";
+
+const { lang, cardType, icon } = Astro.props;
+const t = useTranslations(lang);
+
+// Mapear los tipos de tarjeta a las claves de traducción
+const cardMap = {
+  'cleanCode': 'about.cards.cleanCode',
+  'highPerf': 'about.cards.highPerf', 
+  'frameworks': 'about.cards.frameworks'
+};
+
+const titleKey = `${cardMap[cardType]}Title`;
+const descKey = `${cardMap[cardType]}Desc`;
 ---
 
 <div class="skill-card my-6 p-4">
@@ -8,9 +21,9 @@ const { title, description, icon } = Astro.props;
       <img src={`/${icon}.svg`} alt="" width="64" />
     </div>
     <div class="flex-grow text-center">
-      <h1 class="text-2xl">{title}</h1>
+      <h1 class="text-2xl">{t(titleKey)}</h1>
     </div>
     <div class="flex-shrink-0 w-16"></div>
   </div>
-  <h2 class="pt-2.5 font-instrument">{description}</h2>
+  <h2 class="pt-2.5 font-instrument">{t(descKey)}</h2>
 </div>

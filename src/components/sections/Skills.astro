@@ -1,8 +1,16 @@
+---
+import { useTranslations } from "../../utils/translations";
+
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
 <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
   <!-- Frontend Technologies -->
   <div class="skill-card p-8">
     <h2 class="text-xl font-semibold text-white mb-6 font-syne text-center">
-      Frontend Technologies
+      {t("skills.frontend")}
     </h2>
 
     <div class="skill-item">
@@ -59,7 +67,7 @@
   <!-- Tools & Frameworks -->
   <div class="skill-card p-8">
     <h2 class="text-xl font-semibold text-white mb-6 font-syne text-center">
-      Frameworks
+      {t("skills.frameworks")}
     </h2>
 
     <div class="skill-item">
@@ -116,7 +124,7 @@
   <!-- Backend & Database -->
   <div class="skill-card p-8">
     <h2 class="text-xl font-semibold text-white mb-6 font-syne text-center">
-      Backend & Database
+      {t("skills.backend")}
     </h2>
 
     <div class="skill-item">
@@ -175,7 +183,7 @@
 <div class="mt-12">
   <div class="skill-card p-8 max-w-4xl mx-auto">
     <h2 class="text-xl font-semibold text-white mb-6 font-syne text-center">
-      Additional Technologies
+      {t("skills.additional")}
     </h2>
     <div class="grid md:grid-cols-2 gap-6">
       <div class="skill-item">
@@ -217,9 +225,6 @@
         </div>
         <span class="skill-percentage font-instrument">50%</span>
       </div>
-
-
     </div>
   </div>
-  
 </div>

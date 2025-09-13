@@ -1,47 +1,19 @@
+---
+import { useTranslations } from "../../utils/translations";
+
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
 <div class="text-start w-1/2 ps-60">
-  <!-- <h2 class="py-2 text-lg">
-      ¡Hola! Soy <a
-        target="_blank"
-        href="https://www.linkedin.com/in/christianrodalv/"
-        class="port-color hover:text-white transition-all duration-200"
-        >Christian</a
-      >, desarrollador web apasionado por crear interfaces únicas y de alto
-      rendimiento.
-    </h2>
-    <h2 class="pb-2 text-lg">
-      Mi curiosidad me impulsa a aprender cada día: desde frameworks hasta
-      desarrollo móvil. Este esfuerzo me llevó a recibir el <a
-        target="_blank"
-        href="https://www.linkedin.com/feed/update/urn:li:activity:7340355980406210560/"
-        class="port-color hover:text-white transition-all duration-200"
-      >
-        premio al mejor expediente</a
-      > de mi promoción.
-    </h2>
-    <h2 class="pb-2 text-lg">
-      Al trabajar en equipo me adapto rápido a la metodología y estilo de la
-      empresa, siempre cuidando el código limpio y la fidelidad al diseño.
-    </h2>
-    <h2 class="pb-12 text-lg">
-      Fuera del trabajo disfruto de los videojuegos de rol, pasar tiempo con mi
-      pareja, la escalada y el senderismo.
-    </h2> -->
   <h2 class="pb-10 text-lg">
-    Hi! I'm <a
-      target="_blank"
-      href="https://www.linkedin.com/in/christianrodalv/"
-      class="port-color hover:text-white transition-all duration-200"
-      >Christian</a
-    >, a web developer passionate about building unique and high-performance
-    interfaces. My curiosity drives me to learn every day — from web frameworks
-    to mobile development.
+    {t("about.intro")}
   </h2>
   <h2 class="pb-10 text-lg">
-    When working in a team, I quickly adapt to methodologies and workflows,
-    while keeping my code clean and faithful to the design.
+    {t("about.teamwork")}
   </h2>
   <h2 class="text-lg">
-    Outside of work, I enjoy role-playing and fantasy video games, spending time
-    with my partner, and practicing sports like climbing and hiking.
+    {t("about.hobbies")}
   </h2>
 </div>

@@ -1,0 +1,85 @@
+{
+  "site": {
+    "title": "Christian Portfolio",
+    "description": "Full Stack Developer Portfolio"
+  },
+  "navbar": {
+    "about": "About",
+    "skills": "Skills",
+    "work": "Work",
+    "contact": "Contact"
+  },
+  "header": {
+    "firstName": "Christian",
+    "lastName": "Rodrigo",
+    "role1": "Software",
+    "role2": "Web Developer",
+    "subtitle": "Crafting modern, fast, and user-centered web experiences",
+    "getInTouch": "Get in touch",
+    "downloadCV": "Download CV"
+  },
+  "about": {
+    "title": "About",
+    "intro": "Hi! I'm {{name}}, a web developer passionate about building unique and high-performance interfaces. My curiosity drives me to learn every day — from web frameworks to mobile development.",
+    "teamwork": "When working in a team, I quickly adapt to methodologies and workflows, while keeping my code clean and faithful to the design.",
+    "hobbies": "Outside of work, I enjoy role-playing and fantasy video games, spending time with my partner, and practicing sports like climbing and hiking.",
+    "cards": {
+      "cleanCodeTitle": "Clean Code",
+      "cleanCodeDesc": "Developing clear, maintainable, and scalable code that aligns with best practices and industry standards.",
+      "highPerfTitle": "High-Performance Interfaces",
+      "highPerfDesc": "Creating high-performance apps focused on speed, accessibility, and delivering a smooth user experience.",
+      "frameworksTitle": "Frameworks & Mobile Development",
+      "frameworksDesc": "Proficient in modern web frameworks and mobile technologies to build versatile solutions and expand project impact."
+    }
+  },
+  "skills": {
+    "title": "Skills",
+    "frontend": "Frontend Technologies",
+    "frameworks": "Frameworks",
+    "backend": "Backend & Database",
+    "additional": "Additional Technologies"
+  },
+  "work": {
+    "title": "Work",
+    "otherJobs": "Other Jobs",
+    "personalProjects": "Personal Projects"
+  },
+  "projects": {
+    "coven": {
+      "title": "Coven",
+      "description": "Mobile app for event planning inspired by witch gatherings. Built with React Native, Expo, and Supabase."
+    },
+    "verdatis": {
+      "title": "Verdatis",
+      "description": "Web platform to promote sustainable habits and reward eco-friendly actions with gamification."
+    },
+    "movieBillboard": {
+      "title": "Movie Billboard",
+      "description": "Cinema schedule application with showtimes, trailers, and user ratings. Built with Angular."
+    },
+    "unannounced": {
+      "title": "Unannounced Project",
+      "description": "Upcoming project currently under development. Stay tuned!"
+    }
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "intro": "I am always open to new opportunities where I can contribute and add value. If you think my profile matches what you're looking for, please don't hesitate to get in touch. I'd be glad to connect with you!",
+    "email": "Email",
+    "phone": "Phone",
+    "whatsapp": "Whatsapp",
+    "openChat": "Open Chat",
+    "location": "Location",
+    "form": {
+      "sendMessage": "Send a Message",
+      "namePlaceholder": "Your Name",
+      "emailPlaceholder": "Your Email",
+      "messagePlaceholder": "Your Message",
+      "button": "Send Message",
+      "sent": "✓ Message Sent!"
+    }
+  },
+  "footer": {
+    "builtWith": "© 2025 Christian Rodrigo. Built with Astro.js and Tailwind CSS."
+  }
+}

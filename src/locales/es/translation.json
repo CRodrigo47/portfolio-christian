@@ -1,0 +1,85 @@
+{
+  "site": {
+    "title": "Portfolio Christian",
+    "description": "Portfolio Desarrollador Full Stack"
+  },
+  "navbar": {
+    "about": "Sobre mí",
+    "skills": "Habilidades",
+    "work": "Proyectos",
+    "contact": "Contacto"
+  },
+  "header": {
+    "firstName": "Christian",
+    "lastName": "Rodrigo",
+    "role1": "Desarrollador",
+    "role2": "Web",
+    "subtitle": "Creando experiencias web modernas, rápidas y centradas en el usuario",
+    "getInTouch": "Contactar",
+    "downloadCV": "Descargar CV"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "intro": "¡Hola! Soy {{name}}, un desarrollador web apasionado por crear interfaces únicas y de alto rendimiento. Mi curiosidad me impulsa a aprender cada día — desde frameworks web hasta desarrollo móvil.",
+    "teamwork": "Al trabajar en equipo, me adapto rápidamente a metodologías y flujos de trabajo, manteniendo mi código limpio y fiel al diseño.",
+    "hobbies": "Fuera del trabajo, disfruto de los videojuegos de rol y fantasía, pasar tiempo con mi pareja y practicar deportes como la escalada y el senderismo.",
+    "cards": {
+      "cleanCodeTitle": "Código Limpio",
+      "cleanCodeDesc": "Desarrollando código claro, mantenible y escalable que sigue las mejores prácticas y estándares de la industria.",
+      "highPerfTitle": "Interfaces de Alto Rendimiento",
+      "highPerfDesc": "Creando aplicaciones rápidas, accesibles y centradas en ofrecer una experiencia fluida al usuario.",
+      "frameworksTitle": "Frameworks y Desarrollo Móvil",
+      "frameworksDesc": "Experiencia en frameworks modernos y tecnologías móviles para construir soluciones versátiles y ampliar el impacto de los proyectos."
+    }
+  },
+  "skills": {
+    "title": "Habilidades",
+    "frontend": "Tecnologías Frontend",
+    "frameworks": "Frameworks",
+    "backend": "Backend y Bases de Datos",
+    "additional": "Otras Tecnologías"
+  },
+  "work": {
+    "title": "Proyectos",
+    "otherJobs": "Otros Trabajos",
+    "personalProjects": "Proyectos Personales"
+  },
+  "projects": {
+    "coven": {
+      "title": "Coven",
+      "description": "Aplicación móvil para la planificación de eventos inspirada en los aquelarres de brujas. Desarrollada con React Native, Expo y Supabase."
+    },
+    "verdatis": {
+      "title": "Verdatis",
+      "description": "Plataforma web para promover hábitos sostenibles y recompensar acciones ecológicas mediante gamificación."
+    },
+    "movieBillboard": {
+      "title": "Cartelera de Cine",
+      "description": "Aplicación de cartelera con horarios, tráilers y valoraciones de usuarios. Construida con Angular."
+    },
+    "unannounced": {
+      "title": "Proyecto sin anunciar",
+      "description": "Próximo proyecto actualmente en desarrollo. ¡Mantente atento!"
+    }
+  },
+  "contact": {
+    "title": "Contacto",
+    "intro": "Siempre estoy abierto a nuevas oportunidades donde pueda contribuir y aportar valor. Si crees que mi perfil encaja con lo que buscas, no dudes en ponerte en contacto. ¡Estaré encantado de conectar contigo!",
+    "email": "Correo",
+    "phone": "Teléfono",
+    "whatsapp": "Whatsapp",
+    "openChat": "Abrir Chat",
+    "location": "Ubicación",
+    "form": {
+      "sendMessage": "Enviar un Mensaje",
+      "namePlaceholder": "Tu Nombre",
+      "emailPlaceholder": "Tu Correo",
+      "messagePlaceholder": "Tu Mensaje",
+      "button": "Enviar Mensaje",
+      "sent": "✓ ¡Mensaje enviado!"
+    }
+  },
+  "footer": {
+    "builtWith": "© 2025 Christian Rodrigo. Construido con Astro.js y Tailwind CSS."
+  }
+}

@@ -1,3 +1,11 @@
+---
+import { useTranslations } from "../utils/translations";
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const basePath = lang === 'en' ? '' : `/${lang}`;
+---
+
 <div class="w-full fixed flex justify-center z-50 top-0 sm:top-6">
   <div
     class="inline-flex text-white opacity-80 font-instrument border border-[#1e1d1f] bg-white/2 backdrop-blur-md py-3 rounded-xl px-24 text-sm gap-8 sm:px-8 sm:text-base sm:gap-16"
@@ -5,22 +13,22 @@
     <section
       class="transition-colors duration-300 hover:text-[#b391e6c5] cursor-pointer"
     >
-      <a href="/#about">About</a>
+      <a href={`${basePath}/#about`}>{t("navbar.about")}</a>
     </section>
     <section
       class="transition-colors duration-300 hover:text-[#b391e6c5] cursor-pointer"
     >
-      <a href="/#skills">Skills</a>
+      <a href={`${basePath}/#skills`}>{t("navbar.skills")}</a>
     </section>
     <section
       class="transition-colors duration-300 hover:text-[#b391e6c5] cursor-pointer"
     >
-      <a href="/#work">Work</a>
+      <a href={`${basePath}/#work`}>{t("navbar.work")}</a>
     </section>
      <section
       class="transition-colors duration-300 hover:text-[#b391e6c5] cursor-pointer"
     >
-      <a href="/#contact">Contact</a>
+      <a href={`${basePath}/#contact`}>{t("navbar.contact")}</a>
     </section>
   </div>
 </div>
