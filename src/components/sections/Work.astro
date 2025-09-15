@@ -16,11 +16,10 @@ const personalProjects = await getCollection("personalProjects");
     {
       jobProjects.map((project) => {
         const { slug, data } = project;
-        const { img, description, icons } = data;
+        const { img, icons } = data;
 
         return (
           <WorkCard
-            description={description}
             img={img}
             slug={slug}
             icons={icons}
@@ -36,12 +35,10 @@ const personalProjects = await getCollection("personalProjects");
     {
       personalProjects.map((project) => {
         const { slug, data } = project;
-        const { title, img, description, icons } = data;
+        const { img, icons } = data;
 
         return (
           <WorkCard
-            title={title}
-            description={description}
             img={img}
             slug={slug}
             icons={icons}
