@@ -11,7 +11,7 @@ const { lang, cardType, icon } = Astro.props as {
 
 const t = useTranslations(lang);
 
-// Mapear los tipos de tarjeta a las claves de traducción
+
 const cardMap = {
   'cleanCode': 'about.cards.cleanCode',
   'highPerf': 'about.cards.highPerf', 
@@ -28,7 +28,7 @@ const descKey = `${cardMap[cardType]}Desc`;
       <img src={`/${icon}.svg`} alt="" width="64" />
     </div>
     <div class="flex-grow text-center">
-      <h1 class="text-2xl">{t(titleKey)}</h1>
+      <h1 class="text-md md:text-2xl">{t(titleKey)}</h1>
     </div>
     <div class="flex-shrink-0 w-16"></div>
   </div>

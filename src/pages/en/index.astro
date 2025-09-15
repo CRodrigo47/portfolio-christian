@@ -19,16 +19,16 @@ const t = useTranslations(lang);
   <Spotlight />
   <Navbar lang={lang} />
   <SocialMedia lang={lang}/>
-  <body class="h-full w-full flex">
+  <body class="h-full w-full flex border">
     <Header lang={lang} />
     <div class="px-5 md:px-25 font-instrument text-white opacity-85 text-center pb-10">
       
       <h1 id="about" class="text-3xl xl:text-4xl 2xl:text-5xl font-syne mb-10">
         {t("about.title")}
       </h1>
-      <div class="flex items-center mb-10">
+      <div class="flex flex-col lg:flex-row items-center mb-10">
         <About lang={lang} />
-        <div class="col w-1/2 px-20">
+        <div class="col w-full lg:w-1/2 px-4 lg:px-8 xl:px-20">
           <AboutCard
             lang={lang}
             cardType="cleanCode"
