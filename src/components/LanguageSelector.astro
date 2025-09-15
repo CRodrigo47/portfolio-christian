@@ -1,7 +1,29 @@
 ---
-const { currentLang } = Astro.props;
+const { currentLang, currentPath } = Astro.props;
 const otherLang = currentLang === 'en' ? 'es' : 'en';
-const otherLangPath = currentLang === 'en' ? '/es' : '/en';
+
+// Función para construir la URL del otro idioma
+const buildOtherLangPath = () => {
+  // Si no hay currentPath, usar las rutas por defecto del index
+  if (!currentPath) {
+    return currentLang === 'en' ? '/es' : '/en';
+  }
+  
+  // Si currentPath ya incluye el idioma actual, reemplazarlo
+  if (currentPath.startsWith(`/${currentLang}/`)) {
+    return currentPath.replace(`/${currentLang}/`, `/${otherLang}/`);
+  }
+  
+  // Si currentPath empieza con el idioma opuesto, cambiar al actual
+  if (currentPath.startsWith(`/${otherLang}/`)) {
+    return currentPath.replace(`/${otherLang}/`, `/${currentLang}/`);
+  }
+  
+  // Si no hay idioma en la ruta, añadir el idioma de destino
+  return `/${otherLang}${currentPath}`;
+};
+
+const otherLangPath = buildOtherLangPath();
 ---
 
 <a 

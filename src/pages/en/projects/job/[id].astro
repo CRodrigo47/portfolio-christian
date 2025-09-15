@@ -1,8 +1,10 @@
 ---
-import { getCollection, render } from "astro:content";
+import { getCollection } from "astro:content";
 import Layout from "../../../../layouts/Layout.astro";
 import Spotlight from "../../../../components/Spotlight.astro";
 import Navbar from "../../../../components/Navbar.astro";
+import { useTranslations } from "../../../../utils/translations.js";
+import SocialMedia from "../../../../components/SocialMedia.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("jobProjects");
@@ -15,21 +17,19 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { data, slug } = project;
-const { title, img, description, icons, gallery } = data;
+const { img, icons, gallery } = data;
 
-const { Content } = await render(project);
-
-export const prerender = true;
+const lang = "en";
+const t = useTranslations(lang);
 ---
 
-<Layout>
+<Layout lang={lang}>
   <Spotlight />
-  <Navbar />
-  
+  <Navbar lang={lang} />
   <div class="ps-60 pt-12">
     <a
-      href="/#work"
-      class="relative z-100 flex items-center gap-2 text-white hover:text-gray-300 transition-colors duration-200 cursor-pointer w-20"
+      href={`/${lang}/#work`}
+      class="relative font-syne z-100 flex items-center gap-2 text-white hover:text-gray-300 transition-colors duration-200 cursor-pointer w-20"
     >
       <svg
         class="w-5 h-5"
@@ -48,14 +48,10 @@ export const prerender = true;
   </div>
 
   <iconsSide>
-    <div
-      class="text-white font-instrument text-6xl text-center flex w-full justify-center pt-6 gap-10"
-    >
-      {
-        icons.map((icon: string) => (
-          <i class={icon} transition:name={`icon-${icon + slug}`} />
-        ))
-      }
+    <div class="text-white font-instrument text-6xl text-center flex w-full justify-center pt-6 gap-10">
+      {icons.map((icon: string) => (
+        <i class={icon} transition:name={`icon-${icon + slug}`} />
+      ))}
     </div>
   </iconsSide>
 
@@ -63,51 +59,53 @@ export const prerender = true;
     <aside>
       <img
         transition:name={`img-${slug}`}
-        src={`${img}`}
-        alt={title}
+        src={img}
+        alt={t(`work.${slug}.title`)}
         class="rounded-4xl w-auto h-150 py-2"
       />
     </aside>
-    <main class="text-center items-center">
+    <main class="text-center items-center max-w-2xl">
       <h1
         transition:name={`title-${slug}`}
-        class="text-4xl font-bold mb-4 text-white font-syne"
+        class="text-4xl font-bold mb-10 text-white font-syne"
       >
-        {title}
+        {t(`work.${slug}.title`)}
       </h1>
+
       <div class="text-white font-instrument animate-fadeIn text-start prose">
-        <Content />
+
+        <h2 class="text-white font-syne text-2xl font-bold mb-2">{t("work.projectRole")}</h2>
+        <p class="mb-6">{t(`work.${slug}.role`)}</p>
+
+        <h2 class="text-white font-syne text-2xl font-bold mb-2">{t("work.challenges")}</h2>
+        <p class="mb-6">{t(`work.${slug}.challenge`)}</p>
+
+        <h2 class="text-white font-syne text-2xl font-bold mb-2">{t("work.achievements")}</h2>
+        <p>{t(`work.${slug}.achieve`)}</p>
       </div>
     </main>
   </div>
 
-  <h1
-    class="text-4xl font-bold mt-8 text-white font-syne text-center"
-  >
+  <h1 class="text-4xl font-bold mt-8 text-white font-syne text-center">
     More Images
   </h1>
   <div class="mt-10 flex justify-center">
     <div class="gallery-container w-2/3 max-w-6xl overflow-hidden">
       <div class="gallery-track flex gap-6 mb-20">
-        {
-          gallery.map((photo: string, index: number) => (
-            <img
-              src={photo}
-              alt={`Gallery image ${index + 1}`}
-              class="gallery-item rounded-2xl max-h-120 object-cover flex-shrink-0"
-            />
-          ))
-        }
-        <!-- Duplicar imágenes para el loop infinito -->
-        {
-          gallery.map((photo: string, index: number) => (
-            <img
-              src={photo}
-              alt={`Gallery image ${index + 1}`}
-              class="gallery-item rounded-2xl max-h-120 object-cover flex-shrink-0"
-            />
-          ))
-        }
+        {gallery.map((photo: string, index: number) => (
+          <img
+            src={photo}
+            alt={`Gallery image ${index + 1}`}
+            class="gallery-item rounded-2xl max-h-120 object-cover flex-shrink-0"
+          />
+        ))}
+        {gallery.map((photo: string, index: number) => (
+          <img
+            src={photo}
+            alt={`Gallery image ${index + 1}`}
+            class="gallery-item rounded-2xl max-h-120 object-cover flex-shrink-0"
+          />
+        ))}
       </div>
     </div>
   </div>
@@ -139,7 +137,6 @@ export const prerender = true;
     }
   }
 
-  /* Pausar la animación al hacer hover (opcional) */
   .gallery-container:hover .gallery-track {
     animation-play-state: paused;
   }

@@ -1,7 +1,14 @@
 ---
 import { useTranslations } from "../utils/translations";
 
-const { lang, cardType, icon } = Astro.props;
+type CardType = 'cleanCode' | 'highPerf' | 'frameworks';
+
+const { lang, cardType, icon } = Astro.props as {
+  lang: string;
+  cardType: CardType;
+  icon: string;
+};
+
 const t = useTranslations(lang);
 
 // Mapear los tipos de tarjeta a las claves de traducción

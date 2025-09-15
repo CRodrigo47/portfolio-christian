@@ -1,7 +1,7 @@
 ---
 import LanguageSelector from "./LanguageSelector.astro";
 
-const { lang } = Astro.props;
+const { lang, currentPath } = Astro.props;
 ---
 
 <footer
@@ -59,8 +59,8 @@ const { lang } = Astro.props;
         </svg>
       </a>
     </li>
-        <li>
-      <LanguageSelector currentLang={lang} />
+    <li>
+      <LanguageSelector currentLang={lang} currentPath={currentPath} />
     </li>
   </ul>
 </footer>
