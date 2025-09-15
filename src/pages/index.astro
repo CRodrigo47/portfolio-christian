@@ -1,4 +1,21 @@
 ---
-// Redirigir al idioma por defecto
-return Astro.redirect("/en");
+// src/pages/index.astro
 ---
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Christian's Portfolio</title>
+  <meta http-equiv="refresh" content="0; url=/en">
+  <script>
+    window.location.href = '/en';
+  </script>
+</head>
+<body>
+  <div style="text-align: center; margin-top: 50px; font-family: Arial, sans-serif;">
+    <p>Redirecting to English version...</p>
+    <p>If you're not redirected, <a href="/en" style="color: blue;">click here</a>.</p>
+  </div>
+</body>
+</html>
