@@ -7,7 +7,7 @@ const projectPath = type === 'job' ? `/${lang}/projects/job/${slug}` : `/${lang}
 const t = useTranslations(lang)
 ---
 
-<div class="w-full lg:w-2/4 xl:w-1/3 py-2 px-16">
+<div class="w-full lg:w-2/4 xl:w-1/3 py-2 md:px-16">
   <div class="bg-black border border-gray-800 rounded-xl overflow-hidden hover:border-gray-600 transition-all duration-300 hover:shadow-lg hover:shadow-gray-900/20 group">
     <a href={projectPath} class="block">
       <div class="relative h-48 overflow-hidden">
@@ -32,7 +32,7 @@ const t = useTranslations(lang)
         <p class="text-gray-400 leading-relaxed font-light">
           {t(`work.${slug}.description`)}
         </p>
-        <div class="flex w-full justify-center gap-6 pt-6 text-2xl opacity-90">
+        <div class="flex w-full justify-center gap-6 pt-6 text-xl md:text-2xl opacity-90">
           {icons.map((icon: string) => (
             <i class={icon} transition:name={`icon-${icon + slug}`} ></i>
           ))}

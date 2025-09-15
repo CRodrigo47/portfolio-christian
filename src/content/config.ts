@@ -12,7 +12,8 @@ const personalProjects = defineCollection({
   schema: z.object({
     img: z.string(),
     icons: z.array(z.string()),
-    gallery: z.array(z.string())
+    gallery: z.array(z.string()),
+    github: z.string()
   }),
 });
 
