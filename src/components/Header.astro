@@ -1,8 +1,8 @@
 ---
-import { useTranslations } from "../utils/translations"
+import { useTranslations } from "../utils/translations";
 
-const {lang} = Astro.props
-const t = useTranslations(lang)
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <div class="w-full animate-fadeIn">
@@ -15,9 +15,7 @@ const t = useTranslations(lang)
     <div class="font-syne">
       <h1>Christian</h1>
       <h1 class="lg:ps-24">Rodrigo</h1>
-      <div
-        class="xl:text-3xl text-2xl pt-4 flex gap-2 justify-center lg:ps-1"
-      >
+      <div class="xl:text-3xl text-2xl pt-4 flex gap-2 justify-center lg:ps-1">
         <h1 class="port-color">{t("header.role1")}</h1>
         <h1>{t("header.role2")}</h1>
       </div>
@@ -65,9 +63,19 @@ const t = useTranslations(lang)
 
 <script is:inline>
   function descargarCV() {
-    const link = document.createElement("a");
-    link.href = "/assets/Christian-CV-English.pdf";
-    link.download = "Christian-CV-English.pdf";
-    link.click();
+    const currentPath = window.location.pathname;
+    const isSpanish = currentPath.startsWith('/es');
+    
+    if (isSpanish) {
+      const link = document.createElement("a");
+      link.href = "/assets/Christian-CV-Español.pdf";
+      link.download = "Christian-CV-Español.pdf";
+      link.click();
+    } else {
+      const link = document.createElement("a");
+      link.href = "/assets/Christian-CV-English.pdf";
+      link.download = "Christian-CV-English.pdf";
+      link.click();
+    }
   }
 </script>
