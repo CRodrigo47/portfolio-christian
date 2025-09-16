@@ -228,7 +228,6 @@
   margin: 0 1rem;
 }
 
-/* Animation */
 .progress-bar {
   width: 0;
   animation: fillProgress 2s ease-out forwards;

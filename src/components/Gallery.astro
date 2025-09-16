@@ -1,0 +1,85 @@
+---
+interface Props {
+  images: string[];
+}
+
+const { images } = Astro.props;
+---
+
+<div class="embla w-full overflow-hidden mb-20">
+  <div class="embla__viewport overflow-hidden">
+    <div class="embla__container cursor-grab">
+      {images.map((src, i) => (
+        <div class="embla__slide flex-shrink-0">
+          <img
+            src={src}
+            alt={`Gallery image ${i + 1}`}
+            class="gallery-img rounded-xl sm:rounded-2xl max-h-60 sm:max-h-80 md:max-h-96 lg:max-h-120 object-cover"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .embla__container {
+    display: flex;
+  }
+
+  .embla__slide {
+    min-width: 50%;
+  }
+
+  @media (min-width: 375px) {
+    .embla__slide {
+      min-width: 40%;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .embla__slide {
+      min-width: 30%;
+    }
+  }
+</style>
+
+<script>
+  import emblaCarousel from "embla-carousel";
+
+  function initEmbla() {
+    const viewport = document.querySelector(".embla__viewport");
+    if (!(viewport instanceof HTMLElement)) return;
+
+    const embla = emblaCarousel(viewport, {
+      loop: true,
+      dragFree: true,
+      containScroll: "trimSnaps",
+    });
+
+    // Aplicamos los márgenes a todas las slides, incluyendo clones
+    function applyMargins() {
+      embla.slideNodes().forEach((slide: HTMLElement) => {
+        const img = slide.querySelector<HTMLImageElement>("img");
+        if (!img) return;
+
+        if (img.naturalWidth > img.naturalHeight) {
+          img.style.marginInline = "1rem"; // horizontal
+        } else {
+          img.style.marginInline = "0";    // vertical
+        }
+      });
+    }
+
+    applyMargins();
+
+    // Reaplicamos márgenes cada vez que Embla actualiza slides (por seguridad)
+    embla.on("init", applyMargins);
+    embla.on("reInit", applyMargins);
+  }
+
+  document.addEventListener("DOMContentLoaded", initEmbla);
+  document.addEventListener("astro:page-load", initEmbla);
+</script>
+
+

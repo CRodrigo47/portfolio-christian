@@ -84,11 +84,9 @@ const { lang, currentPath } = Astro.props;
     const footer = document.getElementById("social-footer");
     if (!footer) return;
 
-    // Función para verificar si estamos en resolución md o mayor
     const isMdOrLarger = () => window.innerWidth >= 768;
 
     const updateFooterPosition = () => {
-      // Solo aplicar el comportamiento en resoluciones md y mayores
       if (isMdOrLarger()) {
         if (window.scrollY > 10) {
           footer.classList.add("scrolled");
@@ -96,7 +94,6 @@ const { lang, currentPath } = Astro.props;
           footer.classList.remove("scrolled");
         }
       } else {
-        // En resoluciones menores a md, asegurar que no tenga la clase scrolled
         footer.classList.remove("scrolled");
       }
     };
@@ -109,34 +106,26 @@ const { lang, currentPath } = Astro.props;
       updateFooterPosition();
     };
 
-    // Función para verificar la posición después de cambios de hash
     const handleHashChange = () => {
-      // Usar setTimeout para esperar a que el navegador termine de scrollear al anchor
       setTimeout(() => {
         updateFooterPosition();
       }, 100);
     };
 
-    // Función para verificar la posición al cargar la página
     const handlePageLoad = () => {
-      // Usar setTimeout para asegurar que el DOM esté completamente renderizado
       setTimeout(() => {
         updateFooterPosition();
       }, 100);
     };
 
-    // Ejecutar al cargar la página
     handlePageLoad();
 
-    // Agregar event listeners
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
     window.addEventListener("hashchange", handleHashChange);
 
-    // También escuchar cuando la página se carga completamente
     window.addEventListener("load", handlePageLoad);
 
-    // Cleanup function para cuando el componente se desmonte
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
@@ -145,14 +134,12 @@ const { lang, currentPath } = Astro.props;
     };
   }
 
-  // Ejecutar cuando el DOM esté listo
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", handleSocialMediaScroll);
   } else {
     handleSocialMediaScroll();
   }
 
-  // Para casos de navegación SPA (si usas ViewTransitions de Astro)
   document.addEventListener("astro:page-load", () => {
     handleSocialMediaScroll();
   });

@@ -4,6 +4,7 @@ import Layout from "../../../../layouts/Layout.astro";
 import Spotlight from "../../../../components/Spotlight.astro";
 import Navbar from "../../../../components/Navbar.astro";
 import { useTranslations } from "../../../../utils/translations.js";
+import Gallery from "../../../../components/Gallery.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("personalProjects");
@@ -26,7 +27,7 @@ const t = useTranslations(lang);
   <Spotlight />
   <Navbar lang={lang} />
 
-  <!-- Back button - Responsive positioning -->
+
   <div class="ps-4 sm:ps-8 md:ps-12 xl:ps-60 2xl:ps-96 pt-14 sm:pt-8 md:pt-20">
     <a
       href={`/${lang}/#work`}
@@ -48,7 +49,7 @@ const t = useTranslations(lang);
     </a>
   </div>
 
-  <!-- Icons section - Responsive text sizes -->
+
   <iconsSide>
     <div
       class="text-white font-instrument text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center flex w-full justify-center pt-4 sm:pt-6 gap-4 sm:gap-6 md:gap-8 lg:gap-10 px-4"
@@ -61,11 +62,10 @@ const t = useTranslations(lang);
     </div>
   </iconsSide>
 
-  <!-- Main content - Responsive layout -->
+
   <div
     class="flex flex-col lg:flex-row justify-center items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 py-6 sm:py-8 md:py-10 lg:py-12 px-4 sm:px-6 md:px-8"
   >
-    <!-- Image aside - Responsive sizing -->
     <aside class="w-full lg:w-auto flex justify-center">
       <img
         transition:name={`img-${slug}`}
@@ -75,7 +75,7 @@ const t = useTranslations(lang);
       />
     </aside>
 
-    <!-- Main content - Responsive text and spacing -->
+
     <main
       class="text-center items-center w-full max-w-2xl px-4 sm:px-6 lg:px-0"
     >
@@ -117,47 +117,40 @@ const t = useTranslations(lang);
         </p>
         <a
           href={github}
-          class="font-syne text-lg sm:text-xl md:text-2xl font-bold mb-2 no-underline" style="color: #ba9ce7d7;"
-          >Project Link on Github</a
+          target="_blank"
+          rel="noreferrer noopener"
+          class="w-full bg-port-color hover:bg-port-color cursor-pointer hover:shadow-[0_0_15px_rgba(255,255,255,0.7)] text-black px-8 py-3 rounded-full transition-all duration-300 flex items-center justify-center gap-2 no-underline"
         >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-6 w-6"
+            aria-hidden="true"
+          >
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+            ></path>
+          </svg>
+          Project Link on Github
+        </a>
       </div>
     </main>
   </div>
 
-  <!-- Gallery section - Responsive title -->
+
   <h1
     class="text-2xl sm:text-3xl md:text-4xl font-bold mt-6 sm:mt-8 text-white font-syne text-center px-4"
   >
     More Images
   </h1>
 
-  <!-- Gallery container - Responsive sizing -->
+
   <div class="mt-6 sm:mt-8 md:mt-10 flex justify-center px-4 sm:px-6">
     <div
       class="gallery-container w-full sm:w-5/6 md:w-4/5 lg:w-2/3 max-w-6xl overflow-hidden"
     >
-      <div
-        class="gallery-track flex gap-3 sm:gap-4 md:gap-6 mb-12 sm:mb-16 md:mb-20"
-      >
-        {
-          gallery.map((photo: string, index: number) => (
-            <img
-              src={photo}
-              alt={`Gallery image ${index + 1}`}
-              class="gallery-item rounded-xl sm:rounded-2xl max-h-60 sm:max-h-80 md:max-h-96 lg:max-h-120 object-cover flex-shrink-0"
-            />
-          ))
-        }
-        {
-          gallery.map((photo: string, index: number) => (
-            <img
-              src={photo}
-              alt={`Gallery image ${index + 1}`}
-              class="gallery-item rounded-xl sm:rounded-2xl max-h-60 sm:max-h-80 md:max-h-96 lg:max-h-120 object-cover flex-shrink-0"
-            />
-          ))
-        }
-      </div>
+      <Gallery images={gallery} />
     </div>
   </div>
 </Layout>
@@ -179,7 +172,6 @@ const t = useTranslations(lang);
     animation: infiniteScroll 30s linear infinite;
   }
 
-  /* Responsive animation speed */
   @media (max-width: 640px) {
     .gallery-track {
       animation-duration: 40s;
@@ -199,7 +191,6 @@ const t = useTranslations(lang);
     animation-play-state: paused;
   }
 
-  /* Touch devices - pause animation on touch */
   @media (hover: none) {
     .gallery-container:active .gallery-track {
       animation-play-state: paused;

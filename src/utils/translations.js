@@ -86,7 +86,7 @@ export const translations = {
         achieve:
           "A key achievement was the successful integration of multiple libraries to enhance functionality and user experience, including React Hook Form with Yup, React Native Reanimated, Nativewind, and Zustand. I also configured and optimized Postgres row-level security policies in Supabase, requiring a deep understanding of permissions and database logic. This project strengthened my problem-solving skills and adaptability, proving my ability to learn and implement new technologies quickly.",
       },
-      billboard: {
+      moviebillboard: {
         title: "Movie Billboard",
         description:
           "Developed a single-page cinema listings application, handling both a NoSQL backend and a fully custom frontend built with vanilla React.",
@@ -206,7 +206,7 @@ export const translations = {
         achieve:
           "Un logro clave fue la integración exitosa de múltiples librerías para mejorar la funcionalidad y la experiencia de usuario, incluyendo React Hook Form con Yup, React Native Reanimated, Nativewind y Zustand. También configuré y optimicé las políticas de seguridad a nivel de fila de Postgres en Supabase, lo que exigió un entendimiento profundo de permisos y lógica de bases de datos. Este proyecto reforzó mis habilidades de resolución de problemas y adaptabilidad, demostrando mi capacidad de aprender e implementar nuevas tecnologías rápidamente.",
       },
-      billboard: {
+      moviebillboard: {
         title: "Cartelera de películas",
         description:
           "Desarrollo de una aplicación de cartelera de cine de una sola página, gestionando tanto un backend NoSQL como un frontend completamente personalizado construido con React puro.",

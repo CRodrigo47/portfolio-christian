@@ -5,10 +5,8 @@
     const spotlight = document.getElementById("spotlight");
 
     if (spotlight) {
-      // Remover listener anterior si existe para evitar duplicados
       document.removeEventListener("mousemove", handleMouseMove);
 
-      // Agregar nuevo listener
       document.addEventListener("mousemove", handleMouseMove);
     }
   }
@@ -23,9 +21,7 @@
     `;
   }
 
-  // Inicializar en la carga inicial
   initSpotlight();
 
-  // Re-inicializar después de cada navegación con View Transitions
   document.addEventListener("astro:after-swap", initSpotlight);
 </script>

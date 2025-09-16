@@ -4,6 +4,7 @@ import Layout from "../../../../layouts/Layout.astro";
 import Spotlight from "../../../../components/Spotlight.astro";
 import Navbar from "../../../../components/Navbar.astro";
 import { useTranslations } from "../../../../utils/translations.js";
+import Gallery from "../../../../components/Gallery.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("jobProjects");
@@ -26,7 +27,6 @@ const t = useTranslations(lang);
   <Spotlight />
   <Navbar lang={lang} />
   
-  <!-- Back button - Responsive positioning -->
  <div class="ps-4 sm:ps-8 md:ps-12 xl:ps-60 2xl:ps-96 pt-14 sm:pt-8 md:pt-20">
     <a
       href={`/${lang}/#work`}
@@ -44,11 +44,10 @@ const t = useTranslations(lang);
           stroke-width="2"
           d="M15 19l-7-7 7-7"></path>
       </svg>
-      <span class="text-sm sm:text-base">Back</span>
+      <span class="text-sm sm:text-base">Volver</span>
     </a>
   </div>
 
-  <!-- Icons section - Responsive text sizes -->
   <iconsSide>
     <div class="text-white font-instrument text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center flex w-full justify-center pt-4 sm:pt-6 gap-4 sm:gap-6 md:gap-8 lg:gap-10 px-4">
       {icons.map((icon: string) => (
@@ -57,10 +56,8 @@ const t = useTranslations(lang);
     </div>
   </iconsSide>
 
-  <!-- Main content - Responsive layout -->
   <div class="flex flex-col lg:flex-row justify-center items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 py-6 sm:py-8 md:py-10 lg:py-12 px-4 sm:px-6 md:px-8">
     
-    <!-- Image aside - Responsive sizing -->
     <aside class="w-full lg:w-auto flex justify-center">
       <img
         transition:name={`img-${slug}`}
@@ -70,7 +67,6 @@ const t = useTranslations(lang);
       />
     </aside>
 
-    <!-- Main content - Responsive text and spacing -->
     <main class="text-center items-center w-full max-w-2xl px-4 sm:px-6 lg:px-0">
       <h1
         transition:name={`title-${slug}`}
@@ -93,30 +89,13 @@ const t = useTranslations(lang);
     </main>
   </div>
 
-  <!-- Gallery section - Responsive title -->
   <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mt-6 sm:mt-8 text-white font-syne text-center px-4">
-    More Images
+    Más Imágenes
   </h1>
   
-  <!-- Gallery container - Responsive sizing -->
   <div class="mt-6 sm:mt-8 md:mt-10 flex justify-center px-4 sm:px-6">
     <div class="gallery-container w-full sm:w-5/6 md:w-4/5 lg:w-2/3 max-w-6xl overflow-hidden">
-      <div class="gallery-track flex gap-3 sm:gap-4 md:gap-6 mb-12 sm:mb-16 md:mb-20">
-        {gallery.map((photo: string, index: number) => (
-          <img
-            src={photo}
-            alt={`Gallery image ${index + 1}`}
-            class="gallery-item rounded-xl sm:rounded-2xl max-h-60 sm:max-h-80 md:max-h-96 lg:max-h-120 object-cover flex-shrink-0"
-          />
-        ))}
-        {gallery.map((photo: string, index: number) => (
-          <img
-            src={photo}
-            alt={`Gallery image ${index + 1}`}
-            class="gallery-item rounded-xl sm:rounded-2xl max-h-60 sm:max-h-80 md:max-h-96 lg:max-h-120 object-cover flex-shrink-0"
-          />
-        ))}
-      </div>
+           <Gallery images={gallery} />
     </div>
   </div>
 </Layout>
@@ -138,7 +117,6 @@ const t = useTranslations(lang);
     animation: infiniteScroll 30s linear infinite;
   }
 
-  /* Responsive animation speed */
   @media (max-width: 640px) {
     .gallery-track {
       animation-duration: 40s;
@@ -158,7 +136,6 @@ const t = useTranslations(lang);
     animation-play-state: paused;
   }
 
-  /* Touch devices - pause animation on touch */
   @media (hover: none) {
     .gallery-container:active .gallery-track {
       animation-play-state: paused;
