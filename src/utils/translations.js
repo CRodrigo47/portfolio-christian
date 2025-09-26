@@ -86,15 +86,15 @@ export const translations = {
         achieve:
           "A key achievement was the successful integration of multiple libraries to enhance functionality and user experience, including React Hook Form with Yup, React Native Reanimated, Nativewind, and Zustand. I also configured and optimized Postgres row-level security policies in Supabase, requiring a deep understanding of permissions and database logic. This project strengthened my problem-solving skills and adaptability, proving my ability to learn and implement new technologies quickly.",
       },
-      moviebillboard: {
-        title: "Movie Billboard",
+      trello: {
+        title: "Trello Backend",
         description:
-          "Developed a single-page cinema listings application, handling both a NoSQL backend and a fully custom frontend built with vanilla React.",
-        role: "This personal project was focused on building a movie listing CRUD application with React and Express. I created a backend using Mongoose and Express, while on the frontend I concentrated on deepening my understanding of React. I experimented with advanced concepts such as custom hooks, global state management, and reducers to gain full control over React's internal logic.",
+          "Development of a real backend for a Trello-style application, using Spring Boot and Docker, with a strong focus on testing and clean architecture practices.",
+        role: "This personal project focused on building a solid foundation for a full-stack Trello app. I implemented JWT authentication, set up entities, endpoints, and repositories in Spring Boot, and added unit and integration tests with JUnit and Mockito. I also learned how to deploy the server in the cloud using Docker and Render, which strengthened my confidence in the complete backend development cycle.",
         challenge:
-          "The most rewarding achievement was being the only one in my class to fully embrace React's advanced capabilities, demonstrating initiative and a strong drive to push beyond the standard use cases.",
+          "The biggest learning outcome was understanding how a real backend evolves: it’s not about being perfect from the start, but about adapting and scaling according to the application’s and user’s needs.",
         achieve:
-          "The main challenges were mastering reducers and learning when to refactor code into custom hooks in order to maintain a clean and scalable architecture.",
+          "The main achievements were mastering testing for services and controllers, implementing a secure login flow with JWT, and learning how to package and deploy the server with Docker into a cloud production environment.",
       },
     },
     contact: {
@@ -206,15 +206,15 @@ export const translations = {
         achieve:
           "Un logro clave fue la integración exitosa de múltiples librerías para mejorar la funcionalidad y la experiencia de usuario, incluyendo React Hook Form con Yup, React Native Reanimated, Nativewind y Zustand. También configuré y optimicé las políticas de seguridad a nivel de fila de Postgres en Supabase, lo que exigió un entendimiento profundo de permisos y lógica de bases de datos. Este proyecto reforzó mis habilidades de resolución de problemas y adaptabilidad, demostrando mi capacidad de aprender e implementar nuevas tecnologías rápidamente.",
       },
-      moviebillboard: {
-        title: "Cartelera de películas",
+      trello: {
+        title: "Trello Backend",
         description:
-          "Desarrollo de una aplicación de cartelera de cine de una sola página, gestionando tanto un backend NoSQL como un frontend completamente personalizado construido con React puro.",
-        role: "Este proyecto personal se centró en construir una aplicación CRUD de cartelera de películas con React y Express. Creé un backend usando Mongoose y Express, mientras que en el frontend me concentré en profundizar mi entendimiento de React. Experimenté con conceptos avanzados como custom hooks, gestión global de estado y reducers para tener un control completo de la lógica interna de React.",
+          "Desarrollo de un backend real para una aplicación estilo Trello, utilizando Spring Boot y Docker, con un enfoque fuerte en testing y buenas prácticas de arquitectura.",
+        role: "Este proyecto personal se centró en construir la base sólida de un Trello full-stack. Implementé la autenticación con JWT, configuré entidades, endpoints y repositorios en Spring Boot, y añadí tests unitarios e integración con JUnit y Mockito. Además, aprendí a desplegar el servidor en la nube con Docker y Render, reforzando mi confianza en el ciclo completo de desarrollo backend.",
         challenge:
-          "El logro más gratificante fue ser el único en mi clase que aprovechó por completo las capacidades avanzadas de React, demostrando iniciativa y una fuerte motivación por ir más allá de los casos de uso estándar.",
+          "El mayor aprendizaje fue comprender cómo evoluciona un backend real: no se trata de ser perfecto desde el inicio, sino de adaptarse y escalar según las necesidades de la aplicación y del usuario.",
         achieve:
-          "Los principales retos fueron dominar los reducers y aprender cuándo refactorizar el código en custom hooks para mantener una arquitectura limpia y escalable.",
+          "Los principales logros fueron dominar el testing aplicado a servicios y controladores, implementar un flujo seguro de login con JWT y aprender a empaquetar y desplegar el servidor con Docker, llevándolo a un entorno productivo en la nube.",
       },
     },
     contact: {
